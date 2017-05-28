@@ -9,6 +9,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { Routing } from "app/app.routing";
 import { AddVehicleComponent } from "app/components/add-vehicle/add-vehicle.component";
+import { LoginComponent } from './components/login/login.component';
+import { LoginGuard } from "app/shared/guards/login.guard";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { AddVehicleComponent } from "app/components/add-vehicle/add-vehicle.comp
     SideBarComponent,
     TopBarComponent,
     DashBoardComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,9 @@ import { AddVehicleComponent } from "app/components/add-vehicle/add-vehicle.comp
     HttpModule,
     Routing
   ],
-  providers: [],
+  providers: [
+    LoginGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
