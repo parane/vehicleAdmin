@@ -10,10 +10,10 @@ import { Router, ActivatedRoute } from "@angular/router/src";
 export class UpdateVehicleComponent implements OnInit {
 vehicle = {};
 
-  constructor(private VehicleService: VehicleService, private router: Router, private route: ActivatedRoute) { }
+  //constructor(private VehicleService: VehicleService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getVehicle(this.route.snapshot.params['id']);
+    //this.getVehicle(this.route.snapshot.params['id']);
   }
 
   getVehicle(id) {

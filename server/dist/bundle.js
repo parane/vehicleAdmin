@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -102,15 +102,17 @@ module.exports = require("jsonwebtoken");
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_body_parser__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_body_parser__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_body_parser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_body_parser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes_wizard_route__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mongoose__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__routes_user_route__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jsonwebtoken__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jsonwebtoken___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jsonwebtoken__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes_wizard_route__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_vehicle_route__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mongoose__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_mongoose__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__routes_user_route__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jsonwebtoken__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jsonwebtoken___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_jsonwebtoken__);
+
 
 
 
@@ -130,7 +132,7 @@ app.use(__WEBPACK_IMPORTED_MODULE_1_body_parser___default.a.json());
 app.set('port', 3000);
 
 //connect to mongoDB instance create on mongoLabs
-__WEBPACK_IMPORTED_MODULE_3_mongoose___default.a.connect('mongodb://root:root@ds133321.mlab.com:33321/parane1');
+__WEBPACK_IMPORTED_MODULE_4_mongoose___default.a.connect('mongodb://root:root@ds133321.mlab.com:33321/parane1');
 
 /*app.use('/wizard',(req,res,next) =>{
    console.log("middle for authentication");
@@ -164,9 +166,9 @@ app.get('/', function (req, res) {
 //   });
 
 // });
-
 app.use('/wizard', __WEBPACK_IMPORTED_MODULE_2__routes_wizard_route__["a" /* WizardRoutes */]);
-app.use(__WEBPACK_IMPORTED_MODULE_5__routes_user_route__["a" /* USER_ROUTES */]);
+app.use('/vehicle', __WEBPACK_IMPORTED_MODULE_3__routes_vehicle_route__["a" /* VehicleRoutes */]);
+app.use(__WEBPACK_IMPORTED_MODULE_6__routes_user_route__["a" /* USER_ROUTES */]);
 app.listen(app.get('port'), function () {
     console.log('Node is running on port ' + app.get('port'));
 });
@@ -278,6 +280,63 @@ var USER_ROUTES = router;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VehicleRoutes; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_vehicle_model__ = __webpack_require__(12);
+
+
+
+var router = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
+
+//get all wizard
+router.get('/', function (req, res) {
+    __WEBPACK_IMPORTED_MODULE_1__models_vehicle_model__["a" /* Vehicle */].find(function (err, vehicles) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(vehicles);
+    });
+});
+
+//add wizard
+router.post('/', function (req, res) {
+
+    var vehicle = new __WEBPACK_IMPORTED_MODULE_1__models_vehicle_model__["a" /* Vehicle */]();
+    vehicle.title = req.body.title;
+    vehicle.description = req.body.description;
+    vehicle.price = req.body.price;
+
+    vehicle.save(function (err, data) {
+
+        if (err) {
+            res.send(err);
+        }
+
+        res.json({
+            message: "Vehicle added scuess",
+            data: data
+        });
+    });
+});
+
+// view wizard from ID
+router.get('/:id', function (req, res) {});
+
+// edit wizard from ID
+router.put('/:id', function (req, res) {});
+
+// edit wizard from ID
+router.delete('/:id', function (req, res) {});
+
+//javascript module
+var VehicleRoutes = router;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WizardRoutes; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
@@ -313,7 +372,7 @@ router.post('/', function (req, res) {
 
         res.json({
             message: "Wizard added scuess",
-            data: Data
+            data: data
         });
     });
 });
@@ -355,17 +414,35 @@ router.delete('/:id', function (req, res) {
 var WizardRoutes = router;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(4);
 
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Vehicle; });
+var mongoose = __webpack_require__(1);
+
+var Schema = mongoose.Schema;
+
+var vehicle = new Schema({
+  title: String,
+  description: String,
+  price: Number
+});
+
+var Vehicle = mongoose.model('Vehicle', vehicle);
 
 /***/ })
 /******/ ]);

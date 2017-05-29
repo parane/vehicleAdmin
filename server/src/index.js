@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import {WizardRoutes} from './routes/wizard.route'
+import {VehicleRoutes} from './routes/vehicle.route'
 import mongoose from 'mongoose';
 import  {CONFIG} from './config'
 
@@ -51,8 +52,8 @@ app.get('/',(req,res) =>{
 //   });
   
 // });
-
 app.use('/wizard',WizardRoutes)
+app.use('/vehicle',VehicleRoutes)
 app.use(USER_ROUTES)
 app.listen(app.get('port'),() =>{
     console.log(`Node is running on port ${app.get('port')}`);

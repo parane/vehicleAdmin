@@ -30,7 +30,7 @@ router.post('/',(req,res) => {
 
         res.json({
             message: "Wizard added scuess",
-            data: Data
+            data: data
         })
     }
 
