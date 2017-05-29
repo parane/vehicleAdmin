@@ -3,6 +3,7 @@ import { DashBoardComponent } from "app/components/dash-board/dash-board.compone
 import { AddVehicleComponent } from "app/components/add-vehicle/add-vehicle.component";
 import { LoginComponent } from "app/components/login/login.component";
 import { LoginGuard } from "app/shared/guards/login.guard";
+import { UpdateVehicleComponent } from "app/components/update-vehicle/update-vehicle.component";
 
 const APP_ROUTES: Routes = [
     {
@@ -18,6 +19,10 @@ const APP_ROUTES: Routes = [
     {
         path: 'add',
         component: AddVehicleComponent
+    },
+    {
+        path: 'update',
+        component: UpdateVehicleComponent
     }
 ];
 
