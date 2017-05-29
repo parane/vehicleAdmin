@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddVehicleComponent implements OnInit {
 
+ vehicle = {};
   constructor() { }
 
   ngOnInit() {
+  }
+
+  saveVehicle(){
+    console.log(this.vehicle);
   }
 
 }

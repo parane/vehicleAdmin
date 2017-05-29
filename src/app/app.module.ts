@@ -11,6 +11,8 @@ import { Routing } from "app/app.routing";
 import { AddVehicleComponent } from "app/components/add-vehicle/add-vehicle.component";
 import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from "app/shared/guards/login.guard";
+import { VehicleService } from "app/service/vehicle.service";
+import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { LoginGuard } from "app/shared/guards/login.guard";
     TopBarComponent,
     DashBoardComponent,
     AddVehicleComponent,
-    LoginComponent
+    LoginComponent,
+    UpdateVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { LoginGuard } from "app/shared/guards/login.guard";
     Routing
   ],
   providers: [
-    LoginGuard
+    LoginGuard,
+    VehicleService
   ],
   bootstrap: [AppComponent]
 })

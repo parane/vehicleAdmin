@@ -10,14 +10,28 @@
                             DashBoard 
                             <small>Vehicle Admin</small>
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
+                        
+                    <div class="container">
+                        <h1>Vehicle Catalogue</h1>
+                        <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let vehicle of vehicles">
+                            <td>{{ vehicle.title }}</td>
+                            <td>{{ vehicle.description }}</td>
+                            <td>{{ vehicle.price }}</td>
+                            <td>Show Detail</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>                        
+                        
                     </div>
                 </div>
                 <!-- /.row -->

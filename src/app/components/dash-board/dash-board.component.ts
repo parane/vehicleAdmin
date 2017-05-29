@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashBoardComponent implements OnInit {
 
+
+  vehicles =[{title:'hellp',description:'hellp',price:10},{title:'hell11',description:'hellp11',price:10}];
   constructor() { }
 
   ngOnInit() {
