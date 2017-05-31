@@ -10,7 +10,7 @@ export class VehicleService {
 
   getAllVehicles() {
     return new Promise((resolve, reject) => {
-      this.http.get('/vehicle/')
+      this.http.get('https://vehicle-demo-para1.herokuapp.com/vehicle')
         .map(res => res.json())
         .subscribe(res => {
           console.log(res);
