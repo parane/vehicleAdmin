@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from "app/service/vehicle.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-dash-board',
@@ -8,9 +9,9 @@ import { VehicleService } from "app/service/vehicle.service";
 })
 export class DashBoardComponent implements OnInit {
 
-
+ filteredItems:any;
   vehicles:any; //=[{title:'hellp',description:'hellp',price:10},{title:'hell11',description:'hellp11',price:10}];
-   constructor(private VehicleService: VehicleService) { }
+   constructor(private VehicleService: VehicleService,private router: Router) { }
   ngOnInit() {
         this.getVehicleList();
 
@@ -18,8 +19,25 @@ export class DashBoardComponent implements OnInit {
 getVehicleList() {
     this.VehicleService.getAllVehicles().then((res) => {
       this.vehicles = res;
+      this.assignCopy();
     }, (err) => {
       console.log(err);
     });
   }
+
+  onUpdateClick(id){
+   console.log('click'+id);
+   this.router.navigate(['/update',id]);
+  }
+
+  assignCopy(){
+   this.filteredItems = Object.assign([], this.vehicles);
+}
+filterItem(value){
+   if(!value) this.assignCopy(); //when nothing has typed
+   this.filteredItems = Object.assign([], this.vehicles).filter(
+      vehicle => vehicle.title.toLowerCase().indexOf(value.toLowerCase()) > -1
+   )
+}
+
 }

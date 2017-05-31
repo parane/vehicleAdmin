@@ -5,12 +5,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class VehicleService {
-
+  REMOTE_URL ="https://vehicle-demo-para1.herokuapp.com"
   constructor(private http: Http) { }
 
   getAllVehicles() {
     return new Promise((resolve, reject) => {
-      this.http.get('https://vehicle-demo-para1.herokuapp.com/vehicle')
+      this.http.get(this.REMOTE_URL + '/vehicle')
         .map(res => res.json())
         .subscribe(res => {
           console.log(res);
@@ -25,7 +25,7 @@ export class VehicleService {
 
   showVehicles(id) {
     return new Promise((resolve, reject) => {
-        this.http.get('/vehicle/' + id)
+        this.http.get(this.REMOTE_URL + '/vehicle/' + id)
           .map(res => res.json())
           .subscribe(res => {
             resolve(res)
@@ -37,7 +37,7 @@ export class VehicleService {
 
   saveVehicle(data) {
     return new Promise((resolve, reject) => {
-        this.http.post('/vehicle', data)
+        this.http.post(this.REMOTE_URL +'/vehicle', data)
           .map(res => res.json())
           .subscribe(res => {
             resolve(res);

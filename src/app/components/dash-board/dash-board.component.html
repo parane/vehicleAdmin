@@ -13,7 +13,9 @@
                         
                     <div class="container">
                         <h1>Vehicle Catalogue</h1>
-                        <table class="table">
+                        <input #myInput type="text" class="form-control" placeholder="Vehicle title..."  (input)="filterItem(myInput.value)">
+
+                        <table class="table" style="width: 90%; table-layout: fixed;">
                         <thead>
                         <tr>
                             <th>Title</th>
@@ -22,11 +24,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let vehicle of vehicles">
+                        <tr *ngFor="let vehicle of filteredItems">
                             <td>{{ vehicle.title }}</td>
                             <td>{{ vehicle.description }}</td>
                             <td>{{ vehicle.price }}</td>
-                            <td>Show Detail</td>
+                            <td><a (click)= "onUpdateClick(vehicle._id)" class="btn btn-small btn-primary">Update</a></td>
+                            <td><a  class="btn btn-small btn-danger">delete</a></td>
                         </tr>
                         </tbody>
                     </table>

@@ -21,7 +21,7 @@ const APP_ROUTES: Routes = [
         component: AddVehicleComponent
     },
     {
-        path: 'update',
+        path: 'update/:id',
         component: UpdateVehicleComponent
     }
 ];

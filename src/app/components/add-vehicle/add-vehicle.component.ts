@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VehicleService } from "app/service/vehicle.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -8,13 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class AddVehicleComponent implements OnInit {
 
  vehicle = {};
-  constructor() { }
+  constructor(private vehicleService: VehicleService,private router: Router) { }
 
   ngOnInit() {
   }
 
   saveVehicle(){
-    console.log(this.vehicle);
+   this.vehicleService.saveVehicle(this.vehicle).then((result) => {
+      let id = result['_id'];
+      console.log(id);
+      this.router.navigate(['/']);
+    }, (err) => {
+      console.log(err);
+    });
   }
 
 }
