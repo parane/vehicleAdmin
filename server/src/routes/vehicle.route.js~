@@ -47,25 +47,8 @@ router.get('/:id',(req,res) => {
 
 
 // edit wizard from ID
-router.post('/update',(req,res) => {
-    vehicle.findById( req.body._id, (err, wizard) => {
-        if (err)
-            res.send(err);
+router.put('/:id',(req,res) => {
 
-      vehicle.title = req.body.title;
-      vehicle.description = req.body.description;
-      vehicle.price = req.body.price;
-
-        vehicle.save((err, data) => {
-            if (err)
-                res.send(err);
-
-            res.json({
-                message: "updated successfully",
-                data: data
-            });
-        })
-    });
 });
 
 // edit wizard from ID

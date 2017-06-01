@@ -29,7 +29,7 @@
                             <td>{{ vehicle.description }}</td>
                             <td>{{ vehicle.price }}</td>
                             <td><a (click)= "onUpdateClick(vehicle._id)" class="btn btn-small btn-primary">Update</a></td>
-                            <td><a  class="btn btn-small btn-danger">delete</a></td>
+                            <td><a (click)= "deleteVehicle(vehicle._id)"   class="btn btn-small btn-danger">delete</a></td>
                         </tr>
                         </tbody>
                     </table>

@@ -49,7 +49,7 @@ export class VehicleService {
 
   updateVehicle(id, data) {
     return new Promise((resolve, reject) => {
-        this.http.put('/vehicle/'+id, data)
+        this.http.put(this.REMOTE_URL + '/vehicle/' + id, data)
           .map(res => res.json())
           .subscribe(res => {
             resolve(res);
@@ -61,7 +61,7 @@ export class VehicleService {
 
   deleteVehicle(id) {
     return new Promise((resolve, reject) => {
-        this.http.delete('/vehicle/'+id)
+        this.http.delete(this.REMOTE_URL + '/vehicle/' + id)
           .subscribe(res => {
             resolve(res);
           }, (err) => {

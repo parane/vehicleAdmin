@@ -1,15 +1,58 @@
 # VehicleAdmin
 
-Vehicle Selling Admin Panel using angular.
+A simple vehicle selling application. Admins should be able to insert, update, delete, search vehicles. 
+It Contain two (microservice) component:
+1. Admin Backend (Server - node, expressjs and Mongodb).
+2. Admin Frontend (Angular 2)
 
-1. get Bootstrap html [SB Admin ](https://startbootstrap.com/template-overviews/sb-admin/)
+##Admin Backend
+###Run local Mode:
+```
+Build:
+webpack --watch
 
-2. Adding style in global styles.css
+Run:
+nodemon dist/bundle.js
+
+Access:
+localhost:3000/vehicle
+```
+
+###Run Remote Mode:
+```
+Build:
+webpack
+
+Push to Server:
+git push heroku master
+
+Access Api:
+https://vehicle-demo-para1.herokuapp.com/
+```
+
+Api Documents:
+
+
+##Admin FrontEnd:
+###Run local Mode:
 
 ```
-@import url("assets/css/bootstrap.min.css");
-@import url("assets/css/sb-admin.css");
-@import url("assets/font-awesome/css/font-awesome.min.css");
+Build and Run:
+ng serve
+
+Access:
+localhost:4200/
 ```
-3. Componentized the html.
-![alt text](http://i.imgur.com/VcWfdYt.png)
+
+###Run Remote Mode:
+```
+Build:
+webpack
+
+Push to Server:
+git push heroku master
+
+Access:
+https://vehicle-demo-para1.herokuapp.com/
+```
+

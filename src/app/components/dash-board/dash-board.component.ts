@@ -33,6 +33,17 @@ getVehicleList() {
   assignCopy(){
    this.filteredItems = Object.assign([], this.vehicles);
 }
+
+  deleteVehicle(id) {
+  this.VehicleService.deleteVehicle(id).then((result) => {
+     this.router.navigate(['/']);
+  }, (err) => {
+    console.log(err);
+  });
+}
+
+
+
 filterItem(value){
    if(!value) this.assignCopy(); //when nothing has typed
    this.filteredItems = Object.assign([], this.vehicles).filter(

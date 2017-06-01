@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from "app/service/vehicle.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-update-vehicle',
@@ -10,7 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 export class UpdateVehicleComponent implements OnInit {
 vehicle = {};
 
-  constructor(private route: ActivatedRoute,private VehicleService: VehicleService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private VehicleService: VehicleService) { }
 
   ngOnInit() {
     this.getVehicle(this.route.snapshot.params['id']);
@@ -25,13 +25,20 @@ vehicle = {};
     });
   }
 
-  updateBook(id) {
-    /*this.VehicleService.updateVehicle(id, this.book).then((result) => {
-      let id = result['_id'];
-      this.router.navigate(['/book-details', id]);
+  updateVehicle(id) {
+    this.VehicleService.updateVehicle(id, this.vehicle).then((result) => {
+        this.router.navigate(['/']);
     }, (err) => {
       console.log(err);
-    });*/
+    });
   }
+
+  deleteVehicle(id) {
+  this.VehicleService.deleteVehicle(id).then((result) => {
+     this.router.navigate(['/']);
+  }, (err) => {
+    console.log(err);
+  });
+}
 
 }
