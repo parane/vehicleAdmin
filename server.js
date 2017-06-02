@@ -14,25 +14,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-
+console.log(path.join(__dirname, 'dist'));
 
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+app.get('/*', (req, res) => {
+   const index = path.join(__dirname, 'dist', 'index.html');
+  res.sendFile(index);
 });
 
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || '5000';
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
-const server = http.createServer(app);
+
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
