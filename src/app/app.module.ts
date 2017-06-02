@@ -12,7 +12,9 @@ import { AddVehicleComponent } from "app/components/add-vehicle/add-vehicle.comp
 import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from "app/shared/guards/login.guard";
 import { VehicleService } from "app/service/vehicle.service";
+import { LoginService } from "app/service/login.service";
 import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
+import { ClientViewComponent } from './components/client-view/client-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { UpdateVehicleComponent } from './components/update-vehicle/update-vehic
     DashBoardComponent,
     AddVehicleComponent,
     LoginComponent,
-    UpdateVehicleComponent
+    UpdateVehicleComponent,
+    ClientViewComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { UpdateVehicleComponent } from './components/update-vehicle/update-vehic
   ],
   providers: [
     LoginGuard,
-    VehicleService
+    VehicleService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

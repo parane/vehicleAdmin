@@ -4,6 +4,12 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const VehicleRoutes = require('./server/routes/vehicle.route');
+const mongoose = require('mongoose');
+const CONFIG = require('./server/config');
+
+// Get our API routes
+const api = require('./server/routes/api');
 
 const app = express();
 
@@ -14,7 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// Set our api routes
+app.use('/api', api);
 
+app.use('/vehicle',VehicleRoutes)
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

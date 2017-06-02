@@ -37,7 +37,8 @@ export class VehicleService {
 
   saveVehicle(data) {
     return new Promise((resolve, reject) => {
-        this.http.post(this.REMOTE_URL +'/vehicle', data)
+            data.token = localStorage.getItem('id_token')
+        this.http.post(this.REMOTE_URL +'/vehicle/add', data)
           .map(res => res.json())
           .subscribe(res => {
             resolve(res);
@@ -49,7 +50,8 @@ export class VehicleService {
 
   updateVehicle(id, data) {
     return new Promise((resolve, reject) => {
-        this.http.put(this.REMOTE_URL + '/vehicle/' + id, data)
+ 
+        this.http.put(this.REMOTE_URL + '/vehicle/update/' + id, data)
           .map(res => res.json())
           .subscribe(res => {
             resolve(res);

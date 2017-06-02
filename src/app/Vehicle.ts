@@ -3,5 +3,6 @@ export class Vehicle {
   title: string = '';
   description: string = '';
   price: number;
+  token: string = '';
 
 }

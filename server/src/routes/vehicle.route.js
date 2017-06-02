@@ -15,7 +15,7 @@ router.get('/',(req,res) => {
 });
 
 //add wizard
-router.post('/',(req,res) => {
+router.post('/add/',(req,res) => {
 
 
     let vehicle = new Vehicle();
@@ -42,19 +42,23 @@ router.post('/',(req,res) => {
 // view wizard from ID
 router.get('/:id',(req,res) => {
 
-  
+  Vehicle.findById(req.params.id, (err, vehicle) => {
+        if (err)
+            res.send(err);
+        res.json(vehicle);
+    });
 });
 
 
 // edit wizard from ID
-router.post('/update',(req,res) => {
-    vehicle.findById( req.body._id, (err, wizard) => {
+router.put('/update/:id', (req, res) => {
+    Vehicle.findById(req.params.id, (err, vehicle) => {
         if (err)
             res.send(err);
 
-      vehicle.title = req.body.title;
-      vehicle.description = req.body.description;
-      vehicle.price = req.body.price;
+        vehicle.title = req.body.title;
+    	vehicle.description = req.body.description;
+    	vehicle.price = req.body.price;
 
         vehicle.save((err, data) => {
             if (err)
@@ -68,9 +72,19 @@ router.post('/update',(req,res) => {
     });
 });
 
-// edit wizard from ID
-router.delete('/:id',(req,res) => {
+// Delete wizard from ID
+router.delete('/:id', (req, res) => {
+    Vehicle.remove({
+        _id: req.params.id
+    }, (err, data) => {
+        if (err)
+            res.send(err);
 
+        res.json({
+            "message": "Deleted Successfully",
+            data: data
+        })
+    });
 });
 
 //javascript module

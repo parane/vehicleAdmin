@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="well well-sm">
+        <strong>Search your Dream </strong>
+        <div class="btn-group">
+            <input #myInput type="text" class="form-control" placeholder="Vehicle title..."  (input)="filterItem(myInput.value)">
+        </div>
+    </div>
+    <div id="products" class="row list-group">
+        <div *ngFor="let vehicle of filteredItems; let i = index" class="item  col-xs-4 col-lg-4">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="{{vehicleImageLinks[i%6]}}" alt="" />
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        {{ vehicle.title }}</h4>
+                    <p class="group inner list-group-item-text">
+                       {{ vehicle.description }}</p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                ${{ vehicle.price }}</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <a class="btn btn-success" href="http://www.jquery2dotnet.com">Purchase</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
