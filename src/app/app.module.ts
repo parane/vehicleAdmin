@@ -15,6 +15,7 @@ import { VehicleService } from "app/service/vehicle.service";
 import { LoginService } from "app/service/login.service";
 import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
 import { ClientViewComponent } from './components/client-view/client-view.component';
+import { UnsavedGuard } from "app/shared/guards/unsaved.guard";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ClientViewComponent } from './components/client-view/client-view.compon
   providers: [
     LoginGuard,
     VehicleService,
-    LoginService
+    LoginService,
+    UnsavedGuard
   ],
   bootstrap: [AppComponent]
 })

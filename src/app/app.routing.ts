@@ -5,6 +5,7 @@ import { LoginComponent } from "app/components/login/login.component";
 import { LoginGuard } from "app/shared/guards/login.guard";
 import { UpdateVehicleComponent } from "app/components/update-vehicle/update-vehicle.component";
 import { ClientViewComponent } from "app/components/client-view/client-view.component";
+import { UnsavedGuard } from "app/shared/guards/unsaved.guard";
 
 const APP_ROUTES: Routes = [
     {
@@ -19,11 +20,14 @@ const APP_ROUTES: Routes = [
     },
     {
         path: 'add',
-        component: AddVehicleComponent
+        component: AddVehicleComponent,
+        canActivate: [LoginGuard],
+        canDeactivate: [UnsavedGuard]
     },
     {
         path: 'update/:id',
-        component: UpdateVehicleComponent
+        component: UpdateVehicleComponent,
+         canActivate: [LoginGuard],
     },
     {
         path: 'client',
