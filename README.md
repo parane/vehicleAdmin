@@ -19,6 +19,13 @@ username : Admin
 password: admin
 ```
 
+### Run locally:
+```
+npm install
+ng serve
+
+```
+
 ## Admin Backend
 ### Run local Mode:
 ```
