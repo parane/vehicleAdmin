@@ -76,4 +76,9 @@ git push heroku master
 Access:
 https://vehicle-demo-para.herokuapp.com/
 ```
+### Run Using Docker:
+```
+docker run -p 5000:5000 parane/vehicle-admin
+```
+
 
